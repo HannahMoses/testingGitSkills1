@@ -1,0 +1,951 @@
+1a1aGlossary
+
+
+
+
+======+++++++====================
+AVOID
+There is no good reason to intentionally use variable shadowing in your program. In fact, doing so can lead to confusion over which of the two variables is being used in a given situation. For this reason, you should avoid naming variables and function parameters the same name.
+All functions in JavaScript should begin with a lowercase letter, with the first letter of subsequent words capitalized.
+
+A
+==>Algorithm is like a recipe. It is a systematic series of steps that,
+   when followed, produce a specific result to help solve a problem
+
+==>ASCII code  ASCII stands for American Standard Code for Information Interchange,
+JavaScript uses the UTF-16 encoding, which includes ASCII as a subset. We will 
+rarely need anything outside of its ASCII subset,
+
+   The string method charCodeAt takes an index and returns the ASCII code 
+   of the character at that index.
+
+  To convert an ASCII code to an actual character, use String.fromCharCode().
+==>ARRAYS
+==>ARRAY
+Array is altered by methods concat
+Array is NOT altered by join,split,slice,
+sort() arrages elements of an array in alphabetical order increasing from a to b
+  SORT ARRAY PRECEDENCE : numbers, uppercase Alphabet, lower case alphabet.
+
+To apply a method to the outer array, the syntax is:
+
+multiArrayName.method();
+To apply a method to one of the inner arrays, the syntax is:
+
+multiArrayName[indexOfInnerArray].method();
+
+.............=...............
+split() method
+let numbers = "1,2,3,4";
+let word = "Rutabaga";
+let phrase = "Bookkeeper of balloons."
+let arr = [];
+
+arr = numbers.split(',');  //split the string at each comma.
+console.log(arr);
+
+arr = phrase.split(' ');   //split the string at each space.
+console.log(arr);
+
+arr = word.split('');      //split the string at each character.
+console.log(arr);
+OUTPUT
+['1', '2', '3', '4']
+['Bookkeeper', 'of', 'balloons.']
+['R', 'u', 't', 'a', 'b', 'a', 'g', 'a']
+.................=.............
+ARRAYS ARE MUTABLE = arrays can be changed
+let javaScriptFrameworks = ["React", "Angular", "Ember"];
+console.log(javaScriptFrameworks);
+
+// Set the value of index 2 to be "Vue"
+javaScriptFrameworks[2] = "Vue";
+
+
+// Notice the value at index 2 is now "Vue"
+console.log(javaScriptFrameworks);
+
+..............=...............
+slice() method copies a range of elements from one array into a new array.
+ slice does NOT change the original array, but returns a new array.
+
+The ending index is optional. If it is left out, slice returns a new array 
+that includes everything from the starting index to the end of the original array.
+
+If both indices are used, the new array contains everything from the starting 
+index up to, but NOT including the ending index.
+let arr = ['a', 'b', 'c', 'd', 'e'];
+
+arr.slice(2);
+
+arr.slice(1,4);
+
+console.log(arr);
+OUTPUT
+[ 'c', 'd', 'e' ]
+[ 'b', 'c', 'd' ]
+['a', 'b', 'c', 'd', 'e']
+.................=.........................
+splice
+let arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+
+arr.splice(2);    //Everything from index 2 and beyond is removed.
+console.log(arr);
+OUTPPUT ['a', 'b']
+///////////////////////////////////////////////
+let arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+
+arr.splice(2,3);    //Start at index 2 and remove 3 total entries.
+console.log(arr);
+
+arr.splice(1,1);    //Start at index 1 and remove 1 entry.
+console.log(arr);
+OUTPUT
+[ 'a', 'b', 'f' ]
+[ 'a', 'f' ]
+////////////////////////////////////////////////
+
+Given three or more arguments, splice(index, 0, new item) starts at index 
+and ADDS the new items.
+let arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+
+arr.splice(2,0,'hello');     //Start at index 2, remove 0 entries, and add 'hello'.
+console.log(arr);
+OUTPUT [ 'a', 'b', 'hello', 'c', 'd', 'e', 'f' ]
+/////////////////////////////////////////////////////////
+Given three or more arguments, splice(index, number of items, new items) starts 
+at index and REPLACES the number of items with the new ones
+let arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+
+arr.splice(2,3,'hello', 9);//Start at index 2,replace 3entries with 'hello' and 9.
+console.log(arr);
+OUTPUT [ 'a', 'b', 'hello', 9, 'f' ]
+/////////////////////////////////
+let str = 'In space, no one can hear you code.';
+let arr = ['B', 'n', 'n', 5];
+let cargoHold = "water,space suits,food,plasma sword,batteries";
+
+// Code part E here:
+console.log(str.split());
+console.log(str.split('e'));
+console.log(str.split(' '));
+console.log(str.split(''));
+
+OUTPUT
+
+[ 'In space, no one can hear you code.' ]
+[ 'In spac', ', no on', ' can h', 'ar you cod', '.' ]
+[
+  'In',  'space,',
+  'no',  'one',
+  'can', 'hear',
+  'you', 'code.'
+]
+[
+  'I', 'n', ' ', 's', 'p', 'a', 'c',
+  'e', ',', ' ', 'n', 'o', ' ', 'o',
+  'n', 'e', ' ', 'c', 'a', 'n', ' ',
+  'h', 'e', 'a', 'r', ' ', 'y', 'o',
+  'u', ' ', 'c', 'o', 'd', 'e', '.'
+]
+///////////////////////////////////////
+console.log(arr.join());
+console.log(arr.join('a'));
+console.log(arr.join(' '));
+console.log(arr.join(''));
+OUTPUT
+B,n,n,5
+Banana5
+B n n 5
+Bnn5
+///////////////////
+let words = ['hello', 'world', '!'];
+let newString = '';
+
+newString = arr.join("+");
+console.log(newString);
+
+newString = words.join("");
+console.log(newString);
+
+newString = words.join("_");
+console.log(newString);
+OUTPUT
+1+2+3+4
+helloworld!
+hello_world_!
+//////////////////////
+
+batteries, food, plasma sword, space suits, water
+No
+[ [ 'hydrogen', 'H', 1.008 ],
+[ 'helium', 'He', 4.003 ],
+[ 'iron', 'Fe', 55.85 ] ]
+[ 'helium', 'He', 4.003 ]
+He
+1.008
+helium
+Fe
+.....==============..................
+// Arrays to strings 
+let arr = [1, 2, 3, 4];
+let words = ['hello', 'world', '!'];
+let newString = '';
+
+newString = arr.join("+");
+console.log(newString);
+
+newString = words.join("");
+console.log(newString);
+
+newString = words.join("_");
+console.log(newString);
+..op=.............
+1+2+3+4
+helloworld!
+hello_world_!
+......==============..................
+
+
+
+
+
+.................=................
+
+To apply a method to the outer array, the syntax is:
+
+multiArrayName.method();
+To apply a method to one of the inner arrays, the syntax is:
+
+multiArrayName[indexOfInnerArray].method();
+
+
+
+
+
+===========+++++++++++==============
+
+===========+++++++++++==============
+
+B
+==>Blended learning model incorporates in-class learning with online 
+   materials such as this textbook
+==>"Booster Rockets" can boost your learning,while not required reading.
+
+==>Back end development involves passing data between web pages and servers. 
+   JavaScript can be used for back end development, but other languages like 
+  Java and C# are industry standards. When you fill out a form online and click
+  "Submit", back end code transfers the information you entered to the company
+  that posted the form. Your information now exists on the company’s servers.
+
+
+
+
+==============+++++++++++================
+C
+==>Canvas
+Results from work submitted in repl.it classroom, appear in Canvas after
+   being verified.
+Remember, Canvas holds student grades and quizzes but NOT the course content.
+ Instead, Canvas provides links to the reading and other assignments.
+
+==>collection data types:
+    Data types that are comprised of smaller pieces are called collection data types,
+ or simply collection types.
+==>comment
+Java //
+Javascript //  or  /* ... */
+Python    #
+shortcut cntrl+/
+==>Computer code
+Computers operate using binary code, which consists only of 0s and 1s. For example,
+ here is the binary version of the text 
+Hello
+World:
+
+01001000 01100101 01101100 01101100 01101111 
+00100000 01010111 01101111 01110010 01101100 01100100
+
+Each set of 8 digits represents one character in the text.
+To make things a little easier, binary data may also be represented as hexadecimal
+ values. Here is Hello World expressed in hex:
+
+48 65 6c 6c 6f 
+20 57 6f 72 6c 64
+==>concept check
+Many sections end with a "Check Your Understanding". This section is full
+ of questions for you to double check that you understand the concepts in
+ the reading. Although your score does not count towards your final grade
+ in the class, you should use it to help evaluate your understanding of 
+ the main concepts.
+
+
+==============++++++++++++++=============
+
+
+D
+
+DOM Document Object Model
+Since the DOM is a JavaScript representation of the web page, you can use 
+JavaScript to alter the DOM and consequently, the web page. The browser will 
+re-render the web page anytime changes are made via the DOM.
+Rendering is not the same action as loading.
+The Document Object Model (DOM) is a set of objects that represent the 
+browser and the documents that make up the web page.
+
+ The DOM objects are instances of classes that model the structure of the 
+browser, HTML document, HTML elements, element attributes, and CSS.
+The method document.getElementById will search for a matching element
+ and return a reference to it
+
+
+==============++++++++++====================
+E
+
+
+==========================+++++++++++++================
+F
+
+==>Frameworks
+Jasmine is a popular JavaScript testing framework.
+Jasmine is an npm module that can be installed and used in a manner similar to 
+readline-sync. Usually, Jasmine must be manually installed into a project,
+
+
+
+==>Frontend development feature allows immediate updates to your profile when 
+   you post a status, change the color of the “Submit” button after you complete
+   a form,generate a map when you request directions, or create a sparkly trail
+   that follows the mouse pointer. All of the changes to what you see on the 
+   web page are part of front end development. They are present on your computer.
+
+==>Functions
+=======V9:57 PM 8/30/2020===FUNCTIONS===10.1CG2020======++++++++++======
+-->AVOID
+There is no good reason to intentionally use variable shadowing in your program. In fact, doing so can lead to confusion over which of the two variables is being used in a given situation. For this reason, you should avoid naming variables and function parameters the same name.
+All functions in JavaScript should begin with a lowercase letter, with the first letter of subsequent words capitalized.
+
+
+-->Parameters and arguments //Argument is used when function is invoked
+
+-->If your function will not work properly without one or more of its
+parameters defined, then you should define a default value for 
+these parameters. The default value can be provided next to the 
+parameter name, after =.
+function hello(name = "World") {
+   return `Hello, ${name}!`;
+}
+
+-->we can also call a function with more arguments than it has 
+parameters.These "extra" arguments can still be accessed using a special 
+object named arguments, which is made available to every function.
+
+-->we will learn how to create custom data types, 
+
+-->SCOPE of a function variable10.6.1
+The scope of a variable is the extent to which a variable is visible
+ within a program. Scope consists of all locations within a program
+ where a variable can be used or modified.
+
+-->VARIABLE SHADOWING
+a variable defined outside a function may be visible 
+within the function, in certain circumstances.
+
+While the variable message declared on line 1 is technically
+visible within printMessage (that is, it is in-scope),
+it is hidden by the function parameter of the same name.
+When printMessage("Goodbye") is called and 
+console.log(message) executes, message has the value
+"Goodbye", which is the argument passed into the function.
+This phenomenon is called shadowing, based on the metaphor that a function parameter "casts it's shadow over" a variable of the same name, effectively hiding it.
+
+let message = "Hello, World!";
+
+function printMessage(message) {
+   console.log(message);
+}
+
+printMessage("Goodbye");
+...............=output=.................
+Goodbye
+
+
+8:59 PM 8/30/2020
+function sumToN(n) {
+   let sum = 0;
+   for (let i = 0; i <= n; i++) {
+      sum += i;
+   }
+   return sum;
+}
+
+console.log(sumToN(3));
+........output= 6 ..............
+An interesting thing happens when a function parameter
+ has the same name as a variable that is in-scope.
+While the variable message declared on line 1 is technically
+visible within printMessage (that is, it is in-scope),
+it is hidden by the function parameter of the same name.
+When printMessage("Goodbye") is called and 
+console.log(message) executes, message has the value
+"Goodbye", which is the argument passed into the function.
+This phenomenon is called shadowing, based on the metaphor that a function parameter "casts it's shadow over" a variable of the same name, effectively hiding it.
+
+let message = "Hello, World!";
+
+function printMessage(message) {
+   console.log(message);
+}
+
+printMessage("Goodbye");
+...............=output=.................
+Goodbye
+***FUNCTION IN AN OBJECT*****
+let tortoiseTwo = {
+   species: "Galapagos Tortoise",
+   name: "Patricia",
+   weight: 800,
+   age: 85,
+   diet: ["pumpkins", "lettuce", "cabbage"],
+   sign: function() {
+      return this.name + " is a " + this.species;
+   }
+ };
+
+
+=================+++++++++++++++++++==========================
+G
+GIT
+assgnmnt 14  CG2020aug
+If you need help finding where index.html is located, use the command pwd for "print working directory":
+$ pwd
+/FolderName/OtherFolderName/lc101/html-me-something
+
+
+$ git remote add origin PASTE_REPO_URL_HERE
+$ git push origin master
+
+
+==================++++++++++++===================
+H
+==>high level programming languages include Python, JavaScript, 
+  Basic, COBOL, C++, C#, Java,etc.
+ These high-level languages can be written and understood by humans,
+ and each one has its own characteristic vocabulary, style, and syntax.
+
+
+=============++++++++=================
+I
+==>it function
+The it function is part of the Jasmine framework as well. Calling it creates a specification, or spec, which is a description of expected behavior. The first argument to it is a string describing the expected behavior. This string serves to document the test and is also used in reporting test results. Your expectation strings will usually begin with "should", followed by an expected action.
+
+The second argument to it is yet another anonymous function. This function contains the test code itself, which takes the form of an assertion. An assertion is a declaration of expected behavior in code. Let's examine the contents of the anonymous function:
+
+assert.strictEqual(hello("Jasmine"), "Hello, Jasmine!");
+Calling assert.strictEqual with two arguments declares that we expect the two arguments to be (strictly) equal. As you get started with unit testing, nearly all of your tests will take this form. The first argument to assert.strictEqual is a call to the function hello. The second argument is the expected output from that function call.
+
+If the two arguments are indeed equal, the test will pass. Otherwise, the test will fail. In this case, we are declaring that hello("Jasmine") should return the value "Hello, Jasmine!".
+output will look like this:
+
+1
+2
+3
+4
+5
+6
+7
+8
+Randomized with seed 00798
+Started
+.
+
+
+1 spec, 0 failures
+Finished in 0.016 seconds
+Randomized with seed 00798 (jasmine --random=true --seed=00798)
+The most important line in the output is this one:
+
+1 spec, 0 failures
+It tells us that Jasmine found 1 test specification, and that 0 of the specs failed. In other words, our test passed! The third line also contains useful information. It will contain one dot (.) for each successful test, and an F for each failed test. As our test suite grows, this becomes a nice visual indicator of the status of our tests.
+
+Let's see what a test failure looks like. Go back to hello.js and remove the "!" from the return statement:
+
+return "Hello, " + name;
+Run the tests again. This time, the output looks quite different:
+
+Randomized with seed 98738
+Started
+F
+
+Failures:
+1) hello world test should return a custom message when name is specified
+Message:
+   AssertionError [ERR_ASSERTION]: Input A expected to strictly equal input B:
+   + expected - actual
+
+   - 'Hello, Jasmine'
+   + 'Hello, Jasmine!'
+Stack:
+   error properties: Object({ generatedMessage: true, code: 'ERR_ASSERTION', actual: 'Hello, Jasmine', expected: 'Hello, Jasmine!', operator: 'strictEqual' })
+      at <Jasmine>
+      at UserContext.<anonymous> (/home/runner/spec/reverse.spec.js:23:14)
+      at <Jasmine>
+      at runCallback (timers.js:705:18)
+      at tryOnImmediate (timers.js:676:5)
+      at processImmediate (timers.js:658:5)
+
+1 specs, 1 failure
+Finished in 0.021 seconds
+We intentionally made a test fail. The failing test appears in the Failures: section on line 5. This describes exactly what went wrong. The test expected the value 'Hello, Jasmine!' but received 'Hello, Jasmine'. Notice that the failure description is the result of joining the two string arguments from describe and it. This is why we intentionally defined those strings the way we did.
+
+The Stack: section on line 13 can be mostly ignored for now. Line 22 has a key statistic showing how many tests, called specs, were run and how many failed 1 specs, 1 failure.
+
+Put hello.js back as it was and run the tests again to make sure it works.
+
+===========+++++++==============
+J
+
+==>Jasmine is a framework(see Frameworks)
+
+==>JavaScript is popular programming language used for web development and 
+ runs inside a web browser. 
+ Running inside the browser means that the code loads at the same time as
+  a web page and can modify the content. JavaScript can add or remove text,
+ change colors, produce animations, and react to mouse and keyboard clicks.
+ This makes the web page dynamic---it responds to user actions in real time,
+ and changes occur without having to refresh the page.
+......==============...........
+join
+// Arrays to strings 
+let arr = [1, 2, 3, 4];
+let words = ['hello', 'world', '!'];
+let newString = '';
+
+newString = arr.join("+");
+console.log(newString);
+
+newString = words.join("");
+console.log(newString);
+
+newString = words.join("_");
+console.log(newString);
+..op=.............
+1+2+3+4
+helloworld!
+hello_world_!
+......==============..................
+==================++++++++++============
+K
+
+
+
+
+===================+++++++++++++=============
+L
+
+
+===================++++++++++=================
+M
+Math Object
+..........==.............
+Math Object cannot be changed by user.It is immutable
+console.log(Math.PI);
+
+Math.PI = 1234;
+
+console.log(Math.PI);
+Console Output
+
+3.141592653589793
+3.141592653589793
+..............=================...........
+
+
+Ten Common Math Methods
+Method	Syntax	Description
+abs	Math.abs(number)	Returns the positive value of number.
+ceil	Math.ceil(number)	Rounds the decimal number UP to the closest integer value.
+floor	Math.floor(number)	Rounds the decimal number DOWN to the closest integer value.
+max	Math.max(x,y,z,...)	Returns the largest value from a set of numbers.
+min	Math.min(x,y,z,...)	Returns the smallest value from a set of numbers.
+pow	Math.pow(x,y)	Returns the value of x raised to the power of y (x y).
+random	Math.random()	Returns a random decimal value between 0 and 1, NOT including 1.
+round	Math.round(number)	Returns number rounded to the nearest integer value.
+sqrt	Math.sqrt(number)	Returns the square root of number.
+trunc	Math.trunc(number)	Removes any decimals and returns the integer part of number
+
+console.log(Math.PI);
+console.log(Math.PI*4);
+console.log(Math.PI + Math.PI);
+Console Output
+
+3.141592653589793
+12.566370614359172
+6.283185307179586
+...===..................
+
+
+function randomSelection(arr){
+   let index = Math.floor(Math.random()*arr.length);
+   return arr[index];
+}
+
+let happiness = ['Hope','Joy','Peace','Love','Kindness','Puppies','Kittens','Tortoise'];
+
+for (i=0; i < 8; i++){
+   console.log(randomSelection(happiness));
+}
+repl.it
+
+Console Output
+
+Tortoise
+Love
+Kindness
+Hope
+Kittens
+Kindness
+Love
+Hope
+.......===================...................
+Method and a function are the same with different terms.
+Method is  a procedure or function in object oriented programming
+A function is a group of reusable code which can be called anywhere in your program.
+
+==============+++++++++++===============
+
+==============+++++++++++===============
+N
+
+
+
+
+===================++++++++++++++====================
+O
+
+object-key pair
+object key pair
+To access a property with dot notation, the code looks like:
+ object.key. Notice that the key is no longer surrounded by quotes.
+ However, keys are still strings.
+    species: "Galapagos Tortoise",
+    name: "Pete",
+    weight: 919,
+    age: 85,
+    diet: ["pumpkins", "lettuce", "cabbage"]
+};
+
+console.log(tortoiseOne["name"]);
+console.log(tortoiseOne.name);
+Console Output
+
+Pete
+Pete
+...==========............
+let tortoiseOne = {
+    species: "Galapagos Tortoise",
+    name: "Pete",
+    weight: 919,
+    age: 85,
+    diet: ["pumpkins", "lettuce", "cabbage"]
+};
+
+console.log(tortoiseOne.weight);
+
+newWeight = tortoiseOne.weight + 10;
+
+tortoiseOne["weight"] = newWeight;
+
+console.log(tortoiseOne["weight"]);
+Console Output
+
+919
+929
+............===========.............
+let tortoiseTwo = {
+    species: "Galapagos Tortoise",
+    name: "Pete",
+    weight: 919
+};
+
+console.log(tortoiseTwo);
+
+tortoiseTwo["age"] = 120;
+tortoiseTwo["speed"] = 'Faster than the hare.'
+
+console.log(tortoiseTwo);
+console.log(tortoiseTwo.age);
+Console Output
+
+{ species: 'Galapagos Tortoise', name: 'Pete', weight: 919 }
+{ species: 'Galapagos Tortoise',
+   name: 'Pete',
+   weight: 919,
+   age: 120,
+   speed: 'Faster than the hare.' }
+120
+................======================........
+
+Programmers can pass an object as the input to a function, or use an object as the return value of the function. Any change to the object within the function will change the object itself.
+let tortoiseTwo = {
+   species: "Galapagos Tortoise",
+   name: "Patricia",
+   weight: 800,
+   age: 85,
+   diet: ["pumpkins", "lettuce", "cabbage"],
+   sign: function() {
+      return this.name + " is a " + this.species;
+   }
+ };
+.........================.......
+let tortoiseOne = {
+   species: "Galapagos Tortoise",
+   diet: ["pumpkins", "lettuce", "cabbage"]
+};
+
+let tortoiseTwo = {
+   species: "Galapagos Tortoise",
+   diet: ["pumpkins", "lettuce", "cabbage"]
+};
+
+console.log(tortoiseOne === tortoiseTwo);
+Console Output
+
+false
+The objects contain properties that have the same keys and equal values. However, the output is false.
+Even though tortoiseOne and tortoiseTwo have the same keys and values, they are stored in separate locations in memory. This means that even though you can compare the properties in different objects for equality, you cannot compare the objects themselves for equality
+
+
+==>ordered collections 7.1.1
+strings as sequential collections of characters. This means that the individual 
+characters that make up the string are assumed to be in a particular order from
+ left to right.
+Collection types that allow their elements to be ordered are known as ordered 
+collections, 
+
+
+
+===============++++++++++++++++=================
+P
+==>Print
+  SYntax to print Hello World! 
+Java         System.out.println('Hello World!");
+JavaScript   console.log('Hello World!'); OR console.log("Hello World!");
+Python       print('Hello World!")
+
+==>program is a set of instructions that tell a computer or other machine
+ what to do.These instructions consist of a set of commands,calculations,
+ and manipulations that achieve a specific result
+
+==>programming language is a set of specific words and rules for teaching
+   a computer how to perform a desired task. Examples of programming 
+   languages include Python, JavaScript, Basic, COBOL, C++, C#, Java,etc.
+ These high-level languages can be written and understood by humans,
+ and each one has its own characteristic vocabulary, style, and syntax.
+
+
+==================+++++++++++++++++++==================
+Q
+
+
+
+
+=================++++++++++++++===================
+R
+
+==>Regression  CG14.1.2
+Especially with larger programs, adding new features often causes unexpected problems in other parts of the code, potentially breaking the entire program. The introduction of such a bug is known as a regression.
+
+If you have a collection of tests that can run quickly and consistently, you will know right away when a regression appears
+
+==>RENDER
+Rendering is not the same action as loading.
+Since the DOM is a JavaScript representation of the web page, you can use 
+JavaScript to alter the DOM and consequently, the web page. The browser will 
+re-render the web page anytime changes are made via the DOM.
+
+
+
+==>Repl/it
+You NEVER have to click save when using standard repl.it or 
+repl.it classroom. Repl.it automatically saves your code on their servers.
+
+However, for repl.it classroom you DO have to click "Submit" to turn in
+ your work.
+1.4.2.4. Repl.it Classroom Workspace
+
+Settings menu: Allows you to change editor settings like theme and size.
+Run button: Runs code in the editor panel (7).
+Name of assignment
+Repl.it user menu: Allows you to change account details and change password.
+
+Submit button:  Submits your work.
+If the assignment has been setup to be auto graded, you will received instant
+ feedback.
+If the assignment is NOT auto graded, your TA will need to review and provide
+ feedback.
+Instructions: This describes what you need to code. READ CAREFULLY!
+Editor panel: This is where you write your code.
+Console output: After clicking the run button (2), output and errors will 
+show up here.
+1.4.2.4. Repl.it Classroom Workspace
+
+==>Running inside the browser means that the code loads at the same time as
+  a web page and can modify the content. JavaScript can add or remove text,
+ change colors, produce animations, and react to mouse and keyboard clicks.
+ This makes the web page dynamic---it responds to user actions in real time,
+ and changes occur without having to refresh the page.
+
+==============+++++++=====================
+S
+==>self-documenting code  CG14.1.2
+Code with a good, descriptive set of unit tests is sometimes called self-documenting code.
+Properly designed unit tests are runnable documentation for your project. Because unit tests
+ are runnable code that declares and verifies features, they can NEVER get out of sync with
+ the updated code. If a feature is added or removed, the tests must be updated in order to 
+make them pass.
+
+==>SOMESTRING(i)
+someString[i], where i is the index of the character we want to access. String 
+indices are integers representing the position of a character within a given string,
+ and they start at 0. Thus, the first character of a string has index 0, the second
+ has index 1, and so on.
+     if we try to access an index that doesn't exist, for example -1 or an index 
+  larger than the length of the string, the console displays undefined.
+
+==>STRINGS
+We can also use the backslash, \, to include quotes within a string. 
+This is known as escaping a character.
+console.log("\"The dog's favorite toy is a stuffed hedgehog,\" said Chris");
+OUTPUT
+"The dog's favorite toy is a stuffed hedgehog," said Chris
+//////////////////////////////////////////////////////////////////////////
+Template literals allow for the automatic insertion of expressions (including 
+variables) into strings.
+1)templete literal : $
+
+let name = "Jack";
+let currentAge = 9;
+
+console.log(`Next year, ${name} will be ${currentAge + 1}.`);
+OUTPUT
+Next year, Jack will be 10.
+
+2)template literal : `
+let poem = `The Lord is my shepherd.
+I shall not want.
+He makes me lie down in green pastures.
+He leads me beside still waters
+-David ,son of Jessie;
+
+console.log(poem);
+
+==>CREATE AN ENTIRELY NEW STRING : string+= "addedItem";
+console.log(pet + 's') does not alter the value stored in the variable pet. 
+Instead, the statement prints the value stored in pet ('cat') to the screen and 
+then prints the additional character 's' on the same line.
+
+pet += 's' reassigns the value stored by pet. 'cat' itself is not changed. 
+Instead, an entirely new string is created and stored in the variable.
+
+
+
+Common String Methods
+The methods get executed in order from left to right.
+Method	Syntax	Description
+indexOf	stringName.indexOf(substr)	Returns the index of the first occurrence of the substring in the string, and returns -1 if the substring is not found.
+toLowerCase	stringName.toLowerCase()	Returns a copy of the given string, with all uppercase letters converted to lowercase.
+toUpperCase	stringName.toUpperCase()	Returns a copy of the given string, with all lowercase letters converted to uppercase.
+trim	stringName.trim()	Returns a copy of the given string with the leading and trailing whitespace removed.
+replace	stringName.replace(searchChar, replacementChar)	Returns a copy of stringName, with the first occurrence of searchChar replaced by replacementChar.
+slice	stringName.slice(i, j)	Returns the substring consisting of characters from index i through index j-1.
+==>STRING METHOD charCodeAt()
+The methods get executed in order from left to right.
+The string method charCodeAt takes an index and returns the ASCII code 
+   of the character at that index.
+To convert an ASCII code to an actual character, use String.fromCharCode().
+
+==>sort() arrages elements of an array in alphabetical order increasing from a to b
+  SORT ARRAY PRECEDENCE : numbers, uppercase Alphabet, lower case alphabet.
+
+===========+++++++++++====================
+T
+==>Template literals allow for the automatic insertion of expressions (including
+ variables) into strings.
+1)templete literal : $
+
+let name = "Jack";
+let currentAge = 9;
+
+console.log(`Next year, ${name} will be ${currentAge + 1}.`);
+OUTPUT
+Next year, Jack will be 10.
+
+2)template literal : `
+let poem = `The Lord is my shepherd.
+I shall not want.
+He makes me lie down in green pastures.
+He leads me beside still waters
+-David ,son of Jessie;
+
+console.log(poem);
+//////////////////////////////////////////////////////////////////////////////////////
+this 12.1
+In the example above, on line 8, we see a keyword which is new to us
+Programmers use the this keyword when they call an object's property
+from within the object itself. We could use the object's name instead
+of this, but this is shorter and easier to read. For example, the 
+method, sign, could have a return statement of 
+
+use this instead of 
+tortoiseOne.name + " is a " + tortoiseOne.species". 
+..example=.............=............
+let tortoiseOne = {
+    species: "Galapagos Tortoise",
+    name: "Pete",
+    weight: 919,
+    age: 85,
+    diet: ["pumpkins", "lettuce", "cabbage"],
+    sign: function() {
+        return this.name + " is a " + this.species;
+    }
+ };
+
+To access a property with dot notation, the code looks like: object.key. Notice that the key
+ is no longer surrounded by quotes. However, keys are still strings.
+
+
+================++++++++++++++===============
+U
+
+
+====================+++++++++=================
+V
+
+
+
+===============+++++++++++==================
+W
+
+
+
+===================+++++++++===============
+X
+
+
+
+=============+++++++++=================
+Y
+
+
+
+================++++++++++===================
+Z
+
+
+
+
+===============+++++++++===================
+
+
+
